@@ -5,8 +5,8 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "br.estacio.pingodeouro"
-        minSdkVersion 15
+        applicationId "br.estacio.poupeecompre"
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"

@@ -1,4 +1,4 @@
-package br.estacio.pingodeouro;
+package br.estacio.poupeecompre;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

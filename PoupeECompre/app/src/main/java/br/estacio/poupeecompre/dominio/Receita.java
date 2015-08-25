@@ -9,16 +9,16 @@ public class Receita extends EntidadeBase{
     private BigDecimal valor;
     private Conta conta;
 
-    private Receita(Long id, Date data, String descricao, BigDecimal valor, Conta conta){
-        super(id);
+    private Receita(Date data, String descricao, BigDecimal valor, Conta conta){
+        super();
         this.data = data;
         this.descricao = descricao;
         this.valor = valor;
         this.conta = conta;
     }
 
-    public static Receita criar(Long id, Date data, String descricao, BigDecimal valor, Conta conta){
-       return new Receita(id, data, descricao, valor, conta);
+    public static Receita criar(Date data, String descricao, BigDecimal valor, Conta conta){
+       return new Receita(data, descricao, valor, conta);
     }
 
     public Date getData(){

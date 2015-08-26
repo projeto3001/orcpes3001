@@ -25,7 +25,7 @@ public class UsuarioDAO extends SQLiteOpenHelper {
         String sql = "CREATE TABLE " + TABLE +
                 "(id INTEGER PRIMARY KEY, " +
                 "nome TEXT NOT NULL, " +
-                "email TEXT NOT NULL " +
+                "email TEXT NOT NULL, " +
                 "senha TEXT NOT NULL)";
         db.execSQL(sql);
     }
@@ -56,7 +56,7 @@ public class UsuarioDAO extends SQLiteOpenHelper {
     public List<Usuario> list() {
         List<Usuario> usuarios = new ArrayList<Usuario>();
         Cursor c = getReadableDatabase()
-                .rawQuery("SELECT * FROM " + TABLE + " ORDER BY NOME",null);
+                .rawQuery("SELECT * FROM " + TABLE + " ORDER BY nome",null);
 
         while (c.moveToNext()) {
             Usuario usuario = new Usuario(c.getString(c.getColumnIndex("nome")),

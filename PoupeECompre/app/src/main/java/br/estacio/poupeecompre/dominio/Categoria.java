@@ -11,4 +11,8 @@ public class Categoria extends EntidadeBase{
     public String getDescricao() {
         return descricao;
     }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

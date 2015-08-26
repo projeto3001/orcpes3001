@@ -32,4 +32,20 @@ public class Receita extends EntidadeBase{
     public Conta getConta(){
         return conta;
     }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
 }

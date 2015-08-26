@@ -23,4 +23,16 @@ public class Usuario extends EntidadeBase{
     public String getSenha(){
         return senha;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

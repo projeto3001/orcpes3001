@@ -10,17 +10,13 @@ public class Despesa extends EntidadeBase{
     private Conta conta;
     private Categoria categoria;
 
-    private Despesa(String descricao, Date data, BigDecimal valor, Conta conta, Categoria categoria){
+    public Despesa(String descricao, Date data, BigDecimal valor, Conta conta, Categoria categoria){
         super();
         this.descricao = descricao;
         this.data = data;
         this.valor = valor;
         this.conta = conta;
         this.categoria = categoria;
-    }
-
-    public static Despesa criar(String descricao, Date data, BigDecimal valor, Conta conta, Categoria categoria){
-        return new Despesa(descricao, data, valor, conta, categoria);
     }
 
     public String getDescricao() {

@@ -5,15 +5,11 @@ public class Usuario extends EntidadeBase{
     private String nome;
     private String senha;
 
-    private Usuario(String email, String nome, String senha){
+    public Usuario(String email, String nome, String senha){
         super();
         this.email = email;
         this.nome = nome;
         this.senha = senha;
-    }
-
-    public static Usuario criar(Long id, String email, String nome, String senha){
-        return new Usuario(email, nome, senha);
     }
 
     public String getEmail(){

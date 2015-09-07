@@ -62,9 +62,7 @@ public class UsuarioDAO extends SQLiteOpenHelper {
             Usuario usuario = new Usuario(c.getString(c.getColumnIndex("nome")),
                     c.getString(c.getColumnIndex("email")),
                     c.getString(c.getColumnIndex("senha")));
-
             usuario.setId(c.getLong(c.getColumnIndex("id")));
-
             usuarios.add(usuario);
         }
         c.close();
@@ -83,7 +81,6 @@ public class UsuarioDAO extends SQLiteOpenHelper {
                 c.getString(c.getColumnIndex("email")),
                 c.getString(c.getColumnIndex("senha")));
                 usuario.setId(c.getLong(c.getColumnIndex("id")));
-
         return usuario;
     }
 }

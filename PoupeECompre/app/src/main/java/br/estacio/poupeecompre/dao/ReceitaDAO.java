@@ -74,17 +74,13 @@ public class ReceitaDAO extends SQLiteOpenHelper {
         while (c.moveToNext()) {
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
             Date data  = (Date)dateFormat.parse(c.getString(c.getColumnIndex("data")));
-
             ContaDAO contaDAO = new ContaDAO(context);
             Conta conta = contaDAO.buscarPorId(c.getString(c.getColumnIndex("contaId")));
-
             Receita receita = new Receita(data,
                     c.getString(c.getColumnIndex("descricao")),
                     BigDecimal.valueOf(c.getDouble(c.getColumnIndex("valor"))),
                     conta);
-
             receita.setId(c.getLong(c.getColumnIndex("id")));
-
             receitas.add(receita);
         }
         c.close();

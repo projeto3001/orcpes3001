@@ -21,9 +21,11 @@ public class ReceitaDAO extends SQLiteOpenHelper {
     private static final String DATABASE = "PoupeCompre";
     private static final String TABLE = "Receita";
     private static final int VERSION = 1;
+    private Context context;
 
     public ReceitaDAO(Context context) {
         super(context, DATABASE, null, VERSION);
+        this.context = context;
     }
 
     @Override
@@ -73,9 +75,8 @@ public class ReceitaDAO extends SQLiteOpenHelper {
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
             Date data  = (Date)dateFormat.parse(c.getString(c.getColumnIndex("data")));
 
-            //TODO: Criar ContaDAO
-            ContaDAO contaDAO = new ContaDAO();
-            Conta conta = contaDAO.buscarPorId(c.getString(c.getColumnIndex("contaId"));
+            ContaDAO contaDAO = new ContaDAO(context);
+            Conta conta = contaDAO.buscarPorId(c.getString(c.getColumnIndex("contaId")));
 
             Receita receita = new Receita(data,
                     c.getString(c.getColumnIndex("descricao")),

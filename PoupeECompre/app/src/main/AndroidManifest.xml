@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".cadastroDeUsuario"
+            android:label="@string/title_activity_cadastro_de_usuario" >
+        </activity>
     </application>
 
 </manifest>

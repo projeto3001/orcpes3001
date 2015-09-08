@@ -62,9 +62,7 @@ public class UsuarioDAO extends SQLiteOpenHelper {
             Usuario usuario = new Usuario(c.getString(c.getColumnIndex("nome")),
                     c.getString(c.getColumnIndex("email")),
                     c.getString(c.getColumnIndex("senha")));
-
             usuario.setId(c.getLong(c.getColumnIndex("id")));
-
             usuarios.add(usuario);
         }
         c.close();
@@ -74,5 +72,15 @@ public class UsuarioDAO extends SQLiteOpenHelper {
     public void delete(Usuario usuario) {
         String [] params = {usuario.getId().toString()};
         getWritableDatabase().delete(TABLE, "id=?", params);
+    }
+
+    public Usuario buscarPorId(String id) {
+        Cursor c = getReadableDatabase()
+                .rawQuery("SELECT * FROM " + TABLE + " WHERE id = ", new String[]{id});
+        Usuario usuario = new Usuario(c.getString(c.getColumnIndex("nome")),
+                c.getString(c.getColumnIndex("email")),
+                c.getString(c.getColumnIndex("senha")));
+                usuario.setId(c.getLong(c.getColumnIndex("id")));
+        return usuario;
     }
 }

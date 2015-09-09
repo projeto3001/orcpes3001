@@ -4,14 +4,44 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class loginActivity extends ActionBarActivity {
+
+    private void entrar(){
+        //TODO: implementar o login
+        System.out.println("A fazer...");
+    }
+
+    private void casdastrarUsuario(){
+        //TODO: implementar o cadastrar usuario
+        System.out.println("A fazer...");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        Button entrar, criarUsuario;
+
+        entrar = (Button) findViewById(R.id.entrarBtn);
+        criarUsuario = (Button) findViewById(R.id.criarUsuarioBtn);
+
+        entrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                entrar();
+            }
+        });
+
+        criarUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                casdastrarUsuario();
+            }
+        });
     }
 
     @Override

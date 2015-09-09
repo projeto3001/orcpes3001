@@ -72,8 +72,12 @@ public class CategoriaDAO extends SQLiteOpenHelper {
     public Categoria buscarPorId(String id) {
         Cursor c = getReadableDatabase()
                 .rawQuery("SELECT * FROM " + TABLE + " WHERE id = ", new String[]{id});
-        Categoria categoria = new Categoria(c.getString(c.getColumnIndex("descricao")));
-        categoria.setId(c.getLong(c.getColumnIndex("id")));
+        Categoria categoria = null;
+        if(c.moveToNext()) {
+            categoria = new Categoria(c.getString(c.getColumnIndex("descricao")));
+            categoria.setId(c.getLong(c.getColumnIndex("id")));
+        }
+        c.close();
         return categoria;
     }
 }

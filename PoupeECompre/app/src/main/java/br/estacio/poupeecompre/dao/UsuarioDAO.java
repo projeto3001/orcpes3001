@@ -76,11 +76,15 @@ public class UsuarioDAO extends SQLiteOpenHelper {
 
     public Usuario buscarPorId(String id) {
         Cursor c = getReadableDatabase()
-                .rawQuery("SELECT * FROM " + TABLE + " WHERE id = ", new String[]{id});
-        Usuario usuario = new Usuario(c.getString(c.getColumnIndex("nome")),
-                c.getString(c.getColumnIndex("email")),
-                c.getString(c.getColumnIndex("senha")));
-                usuario.setId(c.getLong(c.getColumnIndex("id")));
+                .rawQuery("SELECT * FROM " + TABLE + " WHERE id = ?", new String[]{id});
+        Usuario usuario = null;
+        if(c.moveToNext()) {
+            usuario = new Usuario(c.getString(c.getColumnIndex("nome")),
+                    c.getString(c.getColumnIndex("email")),
+                    c.getString(c.getColumnIndex("senha")));
+            usuario.setId(c.getLong(c.getColumnIndex("id")));
+        }
+        c.close();
         return usuario;
     }
 }

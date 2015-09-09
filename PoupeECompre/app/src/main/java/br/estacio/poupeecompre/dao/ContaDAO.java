@@ -83,10 +83,14 @@ public class ContaDAO extends SQLiteOpenHelper {
                 .rawQuery("SELECT * FROM " + TABLE + " WHERE id = ", new String[]{id});
         UsuarioDAO usuarioDAO = new UsuarioDAO(context);
         Usuario usuario = usuarioDAO.buscarPorId(c.getString(c.getColumnIndex("id")));
-        Conta conta = new Conta(c.getString(c.getColumnIndex("descricao")),
-                BigDecimal.valueOf(c.getDouble(c.getColumnIndex("saldo"))),
-                usuario);
-        conta.setId(c.getLong(c.getColumnIndex("id")));
+        Conta conta = null;
+        if(c.moveToNext()) {
+            conta = new Conta(c.getString(c.getColumnIndex("descricao")),
+                    BigDecimal.valueOf(c.getDouble(c.getColumnIndex("saldo"))),
+                    usuario);
+            conta.setId(c.getLong(c.getColumnIndex("id")));
+        }
+        c.close();
         return conta;
     }
 }

@@ -1,5 +1,13 @@
 package br.estacio.poupeecompre.dao;
 
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import br.estacio.poupeecompre.dominio.Conta;
+
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -14,23 +22,28 @@ import java.util.List;
 import br.estacio.poupeecompre.dominio.Conta;
 import br.estacio.poupeecompre.dominio.Usuario;
 
+
 public class ContaDAO extends SQLiteOpenHelper {
     private static final String DATABASE = "PoupeCompre";
     private static final String TABLE = "Conta";
     private static final int VERSION = 1;
     private Context context;
 
+
     public ContaDAO(Context context) {
         super(context, DATABASE, null, VERSION);
         this.context = context;
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         String sql = "CREATE TABLE " + TABLE +
                 "(id INTEGER PRIMARY KEY, " +
                 "descricao TEXT," +
                 "saldo NUMERIC," +
+
                 "FOREIGN KEY(usuarioId) REFERENCES Usuario(id))";
         db.execSQL(sql);
     }

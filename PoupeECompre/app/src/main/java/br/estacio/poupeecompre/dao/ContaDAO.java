@@ -43,7 +43,6 @@ public class ContaDAO extends SQLiteOpenHelper {
                 "(id INTEGER PRIMARY KEY, " +
                 "descricao TEXT," +
                 "saldo NUMERIC," +
-
                 "FOREIGN KEY(usuarioId) REFERENCES Usuario(id))";
         db.execSQL(sql);
     }

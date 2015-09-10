@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import br.estacio.poupeecompre.R;
 
 
-public class cadastroDeUsuario extends ActionBarActivity {
+public class CadastroDeUsuarioActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

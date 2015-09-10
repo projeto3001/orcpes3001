@@ -1,5 +1,6 @@
 package br.estacio.poupeecompre.activitys;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +11,7 @@ import android.widget.Button;
 import br.estacio.poupeecompre.R;
 
 
-public class loginActivity extends ActionBarActivity {
+public class LoginActivity extends ActionBarActivity {
 
     private void entrar(){
         //TODO: implementar o login
@@ -18,8 +19,8 @@ public class loginActivity extends ActionBarActivity {
     }
 
     private void casdastrarUsuario(){
-        //TODO: implementar o cadastrar usuario
-        System.out.println("A fazer...");
+        Intent cadastroDeUsuario = new Intent(LoginActivity.this, CadastroDeUsuarioActivity.class);
+        startActivity(cadastroDeUsuario);
     }
 
     @Override

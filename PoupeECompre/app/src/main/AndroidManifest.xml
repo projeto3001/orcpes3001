@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".loginActivity"
+            android:name=".activitys.loginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".cadastroDeUsuario"
+            android:name=".activitys.cadastroDeUsuario"
             android:label="@string/title_activity_cadastro_de_usuario" >
         </activity>
     </application>

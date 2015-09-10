@@ -1,4 +1,4 @@
-package br.estacio.poupeecompre;
+package br.estacio.poupeecompre.activitys;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import br.estacio.poupeecompre.R;
 
 
 public class loginActivity extends ActionBarActivity {

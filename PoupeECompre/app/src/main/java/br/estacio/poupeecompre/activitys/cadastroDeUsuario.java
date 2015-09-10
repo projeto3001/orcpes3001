@@ -1,9 +1,11 @@
-package br.estacio.poupeecompre;
+package br.estacio.poupeecompre.activitys;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import br.estacio.poupeecompre.R;
 
 
 public class cadastroDeUsuario extends ActionBarActivity {

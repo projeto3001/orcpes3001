@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/nomeUsuario"
         android:inputType="text"
-        android:onClick="@string/abc_searchview_description_clear"
         android:hint="Insira o seu usuário..."
         android:layout_above="@+id/senha"
         android:layout_alignParentLeft="true"

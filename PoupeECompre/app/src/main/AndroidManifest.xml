@@ -24,6 +24,10 @@
             android:name=".activitys.CadastroDeDespesaActivity"
             android:label="@string/title_activity_cadastro_de_despesa" >
         </activity>
+        <activity
+            android:name=".activitys.HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
     </application>
 
 </manifest>

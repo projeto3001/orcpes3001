@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -37,7 +38,7 @@ public class CadastroDeUsuarioActivity extends ActionBarActivity {
             Intent login = new Intent(CadastroDeUsuarioActivity.this, LoginActivity.class);
             startActivity(login);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 

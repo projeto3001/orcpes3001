@@ -25,7 +25,7 @@ public class UsuarioDAO extends SQLiteOpenHelper {
         String sql = "CREATE TABLE " + TABLE +
                 "(id INTEGER PRIMARY KEY, " +
                 "nome TEXT NOT NULL, " +
-                "email TEXT NOT NULL, " +
+                "email TEXT NOT NULL UNIOUE, " +
                 "senha TEXT NOT NULL)";
         db.execSQL(sql);
     }
@@ -59,8 +59,8 @@ public class UsuarioDAO extends SQLiteOpenHelper {
                 .rawQuery("SELECT * FROM " + TABLE + " ORDER BY nome",null);
 
         while (c.moveToNext()) {
-            Usuario usuario = new Usuario(c.getString(c.getColumnIndex("nome")),
-                    c.getString(c.getColumnIndex("email")),
+            Usuario usuario = new Usuario(c.getString(c.getColumnIndex("email")),
+                    c.getString(c.getColumnIndex("nome")),
                     c.getString(c.getColumnIndex("senha")));
             usuario.setId(c.getLong(c.getColumnIndex("id")));
             usuarios.add(usuario);
@@ -79,8 +79,22 @@ public class UsuarioDAO extends SQLiteOpenHelper {
                 .rawQuery("SELECT * FROM " + TABLE + " WHERE id = ?", new String[]{id});
         Usuario usuario = null;
         if(c.moveToNext()) {
-            usuario = new Usuario(c.getString(c.getColumnIndex("nome")),
-                    c.getString(c.getColumnIndex("email")),
+            usuario = new Usuario(c.getString(c.getColumnIndex("email")),
+                    c.getString(c.getColumnIndex("nome")),
+                    c.getString(c.getColumnIndex("senha")));
+            usuario.setId(c.getLong(c.getColumnIndex("id")));
+        }
+        c.close();
+        return usuario;
+    }
+
+    public Usuario buscarPorEmail(String email) {
+        Cursor c = getReadableDatabase()
+                .rawQuery("SELECT * FROM " + TABLE + " WHERE email = ?", new String[]{email});
+        Usuario usuario = null;
+        if(c.moveToNext()) {
+            usuario = new Usuario(c.getString(c.getColumnIndex("email")),
+                    c.getString(c.getColumnIndex("nome")),
                     c.getString(c.getColumnIndex("senha")));
             usuario.setId(c.getLong(c.getColumnIndex("id")));
         }

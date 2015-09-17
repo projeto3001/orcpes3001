@@ -7,15 +7,34 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import br.estacio.poupeecompre.R;
+import br.estacio.poupeecompre.dao.UsuarioDAO;
+import br.estacio.poupeecompre.dominio.Usuario;
 
 
 public class LoginActivity extends ActionBarActivity {
 
     private void entrar(){
-        //TODO: implementar o login
-        System.out.println("A fazer...");
+        EditText nomeDeUsuario, senha;
+        nomeDeUsuario = (EditText) findViewById(R.id.nomeUsuario);
+        senha = (EditText) findViewById(R.id.senha);
+        try{
+            UsuarioDAO usuarioDAO = new UsuarioDAO(this);
+            Usuario usuario = usuarioDAO.buscarPorEmail(nomeDeUsuario.getText().toString());
+            validarSenha(senha.getText().toString(), usuario.getSenha());
+            // TODO: Ir para activity de Home
+        }catch(Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    void validarSenha(String senhaInserida, String senhaDoUsuario) throws Exception {
+        if(!senhaInserida.equals(senhaDoUsuario)){
+            throw new Exception("Senha incorreta");
+        }
     }
 
     private void casdastrarUsuario(){
@@ -65,7 +84,6 @@ public class LoginActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

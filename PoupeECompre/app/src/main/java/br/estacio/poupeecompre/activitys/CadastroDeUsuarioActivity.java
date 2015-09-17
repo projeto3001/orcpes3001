@@ -8,6 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+<<<<<<< HEAD
+=======
+import android.widget.TextView;
+import android.widget.Toast;
+>>>>>>> b38bc90b4b28eb8c95c29172d9889920aa99e1f5
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +40,7 @@ public class CadastroDeUsuarioActivity extends ActionBarActivity {
             Intent login = new Intent(CadastroDeUsuarioActivity.this, LoginActivity.class);
             startActivity(login);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 

@@ -4,15 +4,59 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 import br.estacio.poupeecompre.R;
+import br.estacio.poupeecompre.dao.CategoriaDAO;
+import br.estacio.poupeecompre.dao.ContaDAO;
+import br.estacio.poupeecompre.dao.DespesaDAO;
+import br.estacio.poupeecompre.dominio.Categoria;
+import br.estacio.poupeecompre.dominio.Conta;
+import br.estacio.poupeecompre.dominio.Despesa;
 
 public class CadastroDeDespesaActivity extends AppCompatActivity {
+
+
+    private void cadastrarDespesa(){
+        EditText descricao, categoriaCampo, contaCampo, valor, dataCampo;
+        descricao = (EditText) findViewById(R.id.descricao);
+        categoriaCampo = (EditText) findViewById(R.id.categoria);
+        contaCampo = (EditText) findViewById(R.id.conta);
+        valor = (EditText) findViewById(R.id.valor);
+        dataCampo = (EditText) findViewById(R.id.data);
+        try {
+            ContaDAO contaDAO = new ContaDAO(this);
+            Conta conta = contaDAO.buscarPorDescricao(contaCampo.getText().toString());
+            CategoriaDAO categoriaDAO = new CategoriaDAO(this);
+            Categoria categoria = categoriaDAO.buscarPorDescricao(categoriaCampo.getText().toString());
+            Date data = new Date(dataCampo.getText().toString());
+            DespesaDAO despesaDAO = new DespesaDAO(this);
+            Despesa despesa = new Despesa(descricao.getText().toString(),data, BigDecimal.valueOf(Double.parseDouble(valor.getText().toString())),conta, categoria);
+            despesaDAO.insert(despesa);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_de_despesa);
+        setContentView(R.layout.cadastro_de_despesa);
+        Button cadastrar  = (Button) findViewById(R.id.despesaBtn);
+        cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cadastrarDespesa();
+            }
+        });
+
     }
 
     @Override

@@ -3,6 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_cadastro_de_usuario">cadastroDeUsuario</string>
-    <string name="title_activity_cadastro_de_despesa">CadastroDeDespesaActivity</string>
+    <string name="title_activity_cadastro_de_usuario">Cadastro de Usuario</string>
+    <string name="title_activity_cadastro_de_despesa">Cadastro de Despesa</string>
 </resources>

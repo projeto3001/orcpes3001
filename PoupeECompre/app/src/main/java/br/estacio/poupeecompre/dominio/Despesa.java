@@ -19,6 +19,7 @@ public class Despesa extends EntidadeBase{
         this.categoria = categoria;
     }
 
+
     public String getDescricao() {
         return descricao;
     }

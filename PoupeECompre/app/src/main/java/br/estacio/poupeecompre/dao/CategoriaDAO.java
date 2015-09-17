@@ -27,7 +27,7 @@ public class CategoriaDAO extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + TABLE +
                 "(id INTEGER PRIMARY KEY, " +
-                "descricao TEXT NOT NULL)";
+                "descricao TEXT NOT NULL UNIQUE)";
         db.execSQL(sql);
     }
 
@@ -78,6 +78,19 @@ public class CategoriaDAO extends SQLiteOpenHelper {
             categoria.setId(c.getLong(c.getColumnIndex("id")));
         }
         c.close();
+        return categoria;
+    }
+
+    public Categoria buscarPorDescricao(String descricao) {
+        Cursor c = getReadableDatabase()
+                .rawQuery("SELECT * FROM " + TABLE + " WHERE descricao = ", new String[]{descricao});
+        Categoria categoria = null;
+        if(c.moveToNext()) {
+            categoria = new Categoria(c.getString(c.getColumnIndex("descricao")));
+            categoria.setId(c.getLong(c.getColumnIndex("id")));
+        }
+        c.close();
+
         return categoria;
     }
 }

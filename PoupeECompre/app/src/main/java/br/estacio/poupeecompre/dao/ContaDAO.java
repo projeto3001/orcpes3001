@@ -41,7 +41,7 @@ public class ContaDAO extends SQLiteOpenHelper {
 
         String sql = "CREATE TABLE " + TABLE +
                 "(id INTEGER PRIMARY KEY, " +
-                "descricao TEXT," +
+                "descricao TEXT UNIQUE," +
                 "saldo NUMERIC," +
                 "FOREIGN KEY(usuarioId) REFERENCES Usuario(id))";
         db.execSQL(sql);
@@ -93,6 +93,22 @@ public class ContaDAO extends SQLiteOpenHelper {
     public Conta buscarPorId(String id) {
         Cursor c = getReadableDatabase()
                 .rawQuery("SELECT * FROM " + TABLE + " WHERE id = ", new String[]{id});
+        UsuarioDAO usuarioDAO = new UsuarioDAO(context);
+        Usuario usuario = usuarioDAO.buscarPorId(c.getString(c.getColumnIndex("id")));
+        Conta conta = null;
+        if(c.moveToNext()) {
+            conta = new Conta(c.getString(c.getColumnIndex("descricao")),
+                    BigDecimal.valueOf(c.getDouble(c.getColumnIndex("saldo"))),
+                    usuario);
+            conta.setId(c.getLong(c.getColumnIndex("id")));
+        }
+        c.close();
+        return conta;
+    }
+
+    public Conta buscarPorDescricao(String descricao) {
+        Cursor c = getReadableDatabase()
+                .rawQuery("SELECT * FROM " + TABLE + " WHERE descricao = ", new String[]{descricao});
         UsuarioDAO usuarioDAO = new UsuarioDAO(context);
         Usuario usuario = usuarioDAO.buscarPorId(c.getString(c.getColumnIndex("id")));
         Conta conta = null;

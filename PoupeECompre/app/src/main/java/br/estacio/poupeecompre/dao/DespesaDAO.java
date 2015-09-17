@@ -22,6 +22,7 @@ public class DespesaDAO extends SQLiteOpenHelper {
     private static final String DATABASE = "PoupeCompre";
     private static final String TABLE = "Despesa";
     private static final int VERSION = 1;
+    public static Object insert;
     private Context context;
 
 

@@ -3,12 +3,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
+
     <string name="title_activity_cadastro_de_usuario">Cadastro de Usuario</string>
     <string name="title_activity_cadastro_de_despesa">Cadastro de Despesa</string>
-=======
-    <string name="title_activity_cadastro_de_usuario">cadastroDeUsuario</string>
-    <string name="title_activity_cadastro_de_despesa">CadastroDeDespesaActivity</string>
     <string name="title_activity_home">HomeActivity</string>
->>>>>>> b38bc90b4b28eb8c95c29172d9889920aa99e1f5
+    <string name="title_activity_casdastro_de_receitas">Casdastro de Receitas</string>
+
 </resources>

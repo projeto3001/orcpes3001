@@ -28,6 +28,10 @@
             android:name=".activitys.HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
+        <activity
+            android:name=".activitys.CasdastroDeReceitasActivity"
+            android:label="@string/title_activity_casdastro_de_receitas" >
+        </activity>
     </application>
 
 </manifest>

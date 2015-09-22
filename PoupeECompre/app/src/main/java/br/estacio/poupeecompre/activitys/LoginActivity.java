@@ -25,7 +25,8 @@ public class LoginActivity extends ActionBarActivity {
             UsuarioDAO usuarioDAO = new UsuarioDAO(this);
             Usuario usuario = usuarioDAO.buscarPorEmail(nomeDeUsuario.getText().toString());
             validarSenha(senha.getText().toString(), usuario.getSenha());
-            // TODO: Ir para activity de Home
+            Intent home = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(home);
         }catch(Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }

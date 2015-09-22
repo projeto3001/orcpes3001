@@ -25,7 +25,7 @@ public class UsuarioDAO extends SQLiteOpenHelper {
         String sql = "CREATE TABLE " + TABLE +
                 "(id INTEGER PRIMARY KEY, " +
                 "nome TEXT NOT NULL, " +
-                "email TEXT NOT NULL UNIOUE, " +
+                "email TEXT NOT NULL UNIQUE, " +
                 "senha TEXT NOT NULL)";
         db.execSQL(sql);
     }

@@ -1,18 +1,34 @@
 package br.estacio.poupeecompre.activitys;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import br.estacio.poupeecompre.R;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private void registrarEventos(Button despesas) {
+        despesas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent despesasActivity = new Intent(HomeActivity.this, CadastroDeDespesaActivity.class);
+                startActivity(despesasActivity);
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Button despesas;
+        despesas = (Button) findViewById(R.id.despesasBtn);
+        registrarEventos(despesas);
     }
 
     @Override

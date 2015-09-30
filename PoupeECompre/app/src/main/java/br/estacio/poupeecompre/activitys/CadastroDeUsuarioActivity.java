@@ -15,6 +15,7 @@ import java.util.List;
 import br.estacio.poupeecompre.R;
 import br.estacio.poupeecompre.dao.UsuarioDAO;
 import br.estacio.poupeecompre.dominio.Usuario;
+import br.estacio.poupeecompre.helpers.ValidadorDeCadastro;
 
 
 public class CadastroDeUsuarioActivity extends ActionBarActivity {
@@ -26,9 +27,8 @@ public class CadastroDeUsuarioActivity extends ActionBarActivity {
         senha1 = (EditText) findViewById(R.id.senha1);
         senha2 = (EditText) findViewById(R.id.senha2);
         try{
-            validarCamposObrigatorios(Arrays.asList(new String[]{nomeDoUsuario.getText().toString(), email.getText().toString(),
-                    senha1.getText().toString(), senha2.getText().toString()}));
-            validarSenhas(senha1.getText().toString(), senha2.getText().toString());
+            ValidadorDeCadastro validadorDeCadastro = new ValidadorDeCadastro(nomeDoUsuario.getText().toString(), email.getText().toString(), senha1.getText().toString(), senha2.getText().toString());
+            validadorDeCadastro.validar();
             Usuario usuario = new Usuario(email.getText().toString(), nomeDoUsuario.getText().toString(), senha1.getText().toString());
             UsuarioDAO usuarioDAO = new UsuarioDAO(this);
             usuarioDAO.insert(usuario);
@@ -36,21 +36,6 @@ public class CadastroDeUsuarioActivity extends ActionBarActivity {
             startActivity(login);
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void validarSenhas(String senha1, String senha2) throws Exception {
-        if(!senha1.equals(senha2)){
-            throw new Exception("As senhas estão diferentes!");
-        }
-    }
-
-    private void validarCamposObrigatorios(List<String> camposObrigatorios) throws Exception {
-        for (String campo : camposObrigatorios){
-            campo = campo.trim();
-            if(campo == null || campo.equals("")){
-                throw new Exception("Campo obrigatório esta vazio!");
-            }
         }
     }
 

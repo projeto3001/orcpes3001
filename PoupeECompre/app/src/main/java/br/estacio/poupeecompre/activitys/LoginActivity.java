@@ -13,6 +13,7 @@ import android.widget.Toast;
 import br.estacio.poupeecompre.R;
 import br.estacio.poupeecompre.dao.UsuarioDAO;
 import br.estacio.poupeecompre.dominio.Usuario;
+import br.estacio.poupeecompre.helpers.ValidadorDeLogin;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -28,21 +29,13 @@ public class LoginActivity extends ActionBarActivity {
                 Toast.makeText(this, "Usuário não encontrado!!", Toast.LENGTH_LONG).show();
             }
             else {
-                validarSenha(senha.getText().toString(), usuario.getSenha());
-
-
-
+                ValidadorDeLogin validadorDeLogin = new ValidadorDeLogin(senha.getText().toString(), usuario.getSenha());
+                validadorDeLogin.validar();
                 Intent home = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(home);
             }
         }catch(Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-    }
-
-    void validarSenha(String senhaInserida, String senhaDoUsuario) throws Exception {
-        if(!senhaInserida.equals(senhaDoUsuario)){
-            throw new Exception("Senha incorreta");
         }
     }
 

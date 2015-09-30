@@ -24,9 +24,17 @@ public class LoginActivity extends ActionBarActivity {
         try{
             UsuarioDAO usuarioDAO = new UsuarioDAO(this);
             Usuario usuario = usuarioDAO.buscarPorEmail(nomeDeUsuario.getText().toString());
-            validarSenha(senha.getText().toString(), usuario.getSenha());
-            Intent home = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(home);
+            if (usuario == null) {
+                Toast.makeText(this, "Usuário não encontrado!!", Toast.LENGTH_LONG).show();
+            }
+            else {
+                validarSenha(senha.getText().toString(), usuario.getSenha());
+
+
+
+                Intent home = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(home);
+            }
         }catch(Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }

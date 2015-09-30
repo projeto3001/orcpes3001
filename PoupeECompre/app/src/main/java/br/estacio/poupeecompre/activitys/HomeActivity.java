@@ -29,6 +29,13 @@ public class HomeActivity extends AppCompatActivity {
         Button despesas;
         despesas = (Button) findViewById(R.id.despesasBtn);
         registrarEventos(despesas);
+        Button sair = (Button) findViewById(R.id.sairBtn);
+        sair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

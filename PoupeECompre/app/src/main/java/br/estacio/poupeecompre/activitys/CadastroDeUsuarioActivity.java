@@ -16,6 +16,7 @@ import br.estacio.poupeecompre.R;
 import br.estacio.poupeecompre.dao.UsuarioDAO;
 import br.estacio.poupeecompre.dominio.Usuario;
 import br.estacio.poupeecompre.helpers.ValidadorDeCadastro;
+import br.estacio.poupeecompre.service.UsuarioService;
 
 
 public class CadastroDeUsuarioActivity extends ActionBarActivity {
@@ -30,8 +31,8 @@ public class CadastroDeUsuarioActivity extends ActionBarActivity {
             ValidadorDeCadastro validadorDeCadastro = new ValidadorDeCadastro(nomeDoUsuario.getText().toString(), email.getText().toString(), senha1.getText().toString(), senha2.getText().toString());
             validadorDeCadastro.validar();
             Usuario usuario = new Usuario(email.getText().toString(), nomeDoUsuario.getText().toString(), senha1.getText().toString());
-            UsuarioDAO usuarioDAO = new UsuarioDAO(this);
-            usuarioDAO.insert(usuario);
+            UsuarioService usuarioService = new UsuarioService(this);
+            usuarioService.insert(usuario);
             Intent login = new Intent(CadastroDeUsuarioActivity.this, LoginActivity.class);
             startActivity(login);
         }catch (Exception e){

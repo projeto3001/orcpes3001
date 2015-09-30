@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.estacio.poupeecompre.dominio.Usuario;
+import br.estacio.poupeecompre.service.IUsuarioService;
 
-public class UsuarioDAO extends SQLiteOpenHelper {
+public class UsuarioDAO extends SQLiteOpenHelper implements IUsuarioService{
     private static final String DATABASE = "PoupeCompre";
     private static final String TABLE = "Usuario";
     private static final int VERSION = 1;
@@ -48,7 +49,6 @@ public class UsuarioDAO extends SQLiteOpenHelper {
         values.put("nome", usuario.getNome());
         values.put("email", usuario.getEmail());
         values.put("senha", usuario.getSenha());
-
         String [] params = {usuario.getId().toString()};
         getWritableDatabase().update(TABLE, values, "id=?", params);
     }

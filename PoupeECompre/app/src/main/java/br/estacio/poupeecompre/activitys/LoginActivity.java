@@ -11,9 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.estacio.poupeecompre.R;
-import br.estacio.poupeecompre.dao.UsuarioDAO;
 import br.estacio.poupeecompre.dominio.Usuario;
 import br.estacio.poupeecompre.helpers.ValidadorDeLogin;
+import br.estacio.poupeecompre.service.UsuarioService;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -23,8 +23,8 @@ public class LoginActivity extends ActionBarActivity {
         nomeDeUsuario = (EditText) findViewById(R.id.nomeUsuario);
         senha = (EditText) findViewById(R.id.senha);
         try{
-            UsuarioDAO usuarioDAO = new UsuarioDAO(this);
-            Usuario usuario = usuarioDAO.buscarPorEmail(nomeDeUsuario.getText().toString());
+            UsuarioService usuarioService = new UsuarioService(this);
+            Usuario usuario = usuarioService.buscarPorEmail(nomeDeUsuario.getText().toString());
             if (usuario == null) {
                 Toast.makeText(this, "Usuário não encontrado!!", Toast.LENGTH_LONG).show();
             }

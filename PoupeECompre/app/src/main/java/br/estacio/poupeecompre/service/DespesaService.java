@@ -1,10 +1,11 @@
-package br.estacio.poupeecompre.dao;
+package br.estacio.poupeecompre.service;
 
 import android.content.Context;
 
 import java.text.ParseException;
 import java.util.List;
 
+import br.estacio.poupeecompre.dao.DespesaDAO;
 import br.estacio.poupeecompre.dominio.Despesa;
 import br.estacio.poupeecompre.service.IDespesaService;
 

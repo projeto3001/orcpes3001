@@ -21,9 +21,10 @@ import java.util.List;
 
 import br.estacio.poupeecompre.dominio.Conta;
 import br.estacio.poupeecompre.dominio.Usuario;
+import br.estacio.poupeecompre.service.IContaService;
 
 
-public class ContaDAO extends SQLiteOpenHelper {
+public class ContaDAO extends SQLiteOpenHelper implements IContaService{
     private static final String DATABASE = "PoupeCompre";
     private static final String TABLE = "Conta";
     private static final int VERSION = 1;
@@ -52,6 +53,7 @@ public class ContaDAO extends SQLiteOpenHelper {
 
     }
 
+    @Override
     public void insert(Conta conta) {
         ContentValues values = new ContentValues();
         values.put("descricao", conta.getDescricao());
@@ -61,6 +63,7 @@ public class ContaDAO extends SQLiteOpenHelper {
         getWritableDatabase().insert(TABLE, null, values);
     }
 
+    @Override
     public void update(Conta conta) {
         ContentValues values = new ContentValues();
         values.put("descricao", conta.getDescricao());
@@ -71,6 +74,7 @@ public class ContaDAO extends SQLiteOpenHelper {
         getWritableDatabase().update(TABLE, values, "id=?", params);
     }
 
+    @Override
     public List<Conta> list() throws ParseException {
         List<Conta> contas = new ArrayList<Conta>();
         Cursor c = getReadableDatabase()
@@ -90,6 +94,7 @@ public class ContaDAO extends SQLiteOpenHelper {
         return contas;
     }
 
+    @Override
     public Conta buscarPorId(String id) {
         Cursor c = getReadableDatabase()
                 .rawQuery("SELECT * FROM " + TABLE + " WHERE id = ", new String[]{id});
@@ -106,6 +111,7 @@ public class ContaDAO extends SQLiteOpenHelper {
         return conta;
     }
 
+    @Override
     public Conta buscarPorDescricao(String descricao) {
         Cursor c = getReadableDatabase()
                 .rawQuery("SELECT * FROM " + TABLE + " WHERE descricao = ", new String[]{descricao});

@@ -17,8 +17,9 @@ import java.util.List;
 import br.estacio.poupeecompre.dominio.Categoria;
 import br.estacio.poupeecompre.dominio.Conta;
 import br.estacio.poupeecompre.dominio.Despesa;
+import br.estacio.poupeecompre.service.IDespesaService;
 
-public class DespesaDAO extends SQLiteOpenHelper {
+public class DespesaDAO extends SQLiteOpenHelper implements IDespesaService{
     private static final String DATABASE = "PoupeCompre";
     private static final String TABLE = "Despesa";
     private static final int VERSION = 1;
@@ -47,6 +48,7 @@ public class DespesaDAO extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
+    @Override
     public void insert(Despesa despesa) {
         ContentValues values = new ContentValues();
         values.put("descricao", despesa.getDescricao());
@@ -58,6 +60,7 @@ public class DespesaDAO extends SQLiteOpenHelper {
         getWritableDatabase().insert(TABLE, null, values);
     }
 
+    @Override
     public void update(Despesa despesa) {
         ContentValues values = new ContentValues();
         values.put("descricao", despesa.getDescricao());
@@ -70,6 +73,7 @@ public class DespesaDAO extends SQLiteOpenHelper {
         getWritableDatabase().update(TABLE, values, "id=?", params);
     }
 
+    @Override
     public List<Despesa> list() throws ParseException {
         List<Despesa> despesas = new ArrayList<Despesa>();
         Cursor c = getReadableDatabase()
@@ -94,6 +98,7 @@ public class DespesaDAO extends SQLiteOpenHelper {
         return despesas;
     }
 
+    @Override
     public void delete(Despesa despesa) {
         String [] params = {despesa.getId().toString()};
         getWritableDatabase().delete(TABLE, "id=?", params);

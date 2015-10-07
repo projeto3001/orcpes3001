@@ -16,8 +16,9 @@ import java.util.Date;
 
 import br.estacio.poupeecompre.dominio.Conta;
 import br.estacio.poupeecompre.dominio.Receita;
+import br.estacio.poupeecompre.service.IReceitaService;
 
-public class ReceitaDAO extends SQLiteOpenHelper {
+public class ReceitaDAO extends SQLiteOpenHelper implements IReceitaService{
     private static final String DATABASE = "PoupeCompre";
     private static final String TABLE = "Receita";
     private static final int VERSION = 1;
@@ -45,7 +46,8 @@ public class ReceitaDAO extends SQLiteOpenHelper {
 
     }
 
-    public void insert(Receita receita) {
+    @Override
+    public void inser(Receita receita) {
         ContentValues values = new ContentValues();
         values.put("data", String.valueOf(receita.getData()));
         values.put("descricao", receita.getDescricao());
@@ -55,6 +57,7 @@ public class ReceitaDAO extends SQLiteOpenHelper {
         getWritableDatabase().insert(TABLE, null, values);
     }
 
+    @Override
     public void update(Receita receita) {
         ContentValues values = new ContentValues();
         values.put("data", String.valueOf(receita.getData()));
@@ -66,6 +69,7 @@ public class ReceitaDAO extends SQLiteOpenHelper {
         getWritableDatabase().update(TABLE, values, "id=?", params);
     }
 
+    @Override
     public List<Receita> list() throws ParseException {
         List<Receita> receitas = new ArrayList<Receita>();
         Cursor c = getReadableDatabase()

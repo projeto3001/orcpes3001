@@ -9,11 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.util.Arrays;
-import java.util.List;
 
 import br.estacio.poupeecompre.R;
-import br.estacio.poupeecompre.dao.UsuarioDAO;
+
 import br.estacio.poupeecompre.dominio.Usuario;
 import br.estacio.poupeecompre.helpers.ValidadorDeCadastro;
 import br.estacio.poupeecompre.service.UsuarioService;

@@ -12,7 +12,7 @@ import br.estacio.poupeecompre.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private void registrarEventos(Button despesas) {
+    private void registrarEventos(Button despesas, Button receitas) {
         despesas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -20,7 +20,16 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(despesasActivity);
             }
         });
+
+        receitas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent receitasActivity = new Intent(HomeActivity.this, CasdastroDeReceitasActivity.class );
+                startActivity(receitasActivity);
+            }
+        });
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Button despesas;
         despesas = (Button) findViewById(R.id.despesasBtn);
-        registrarEventos(despesas);
+
         Button sair = (Button) findViewById(R.id.sairBtn);
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +45,8 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Button receitas = (Button) findViewById(R.id.receitasBtn);
+        registrarEventos(despesas,receitas);
     }
 
     @Override

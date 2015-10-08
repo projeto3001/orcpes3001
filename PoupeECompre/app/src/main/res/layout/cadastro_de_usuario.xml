@@ -37,7 +37,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:inputType="numberPassword"
         android:ems="10"
         android:id="@+id/senha1"
         android:layout_centerVertical="true"
@@ -50,7 +50,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:inputType="numberPassword"
         android:ems="10"
         android:id="@+id/senha2"
         android:hint="Confirme sua senha"

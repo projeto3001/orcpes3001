@@ -33,19 +33,12 @@
             android:label="@string/title_activity_casdastro_de_receitas" >
         </activity>
         <activity
-            android:name=".activitys.CasdastroDeReceitasActivity$CadastroDeCategoriaActivitys"
-            android:label="@string/title_activity_cadastro_de_categoria_activitys"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
             android:name=".activitys.CadastroDeCategoriaActivity"
-            android:label="@string/title_activity_cadastro_de_categoria"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="@string/title_activity_cadastro_de_categoria">
         </activity>
         <activity
             android:name=".activitys.CadastroDeContaActivity"
-            android:label="@string/title_activity_cadastro_de_conta"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="@string/title_activity_cadastro_de_conta">
         </activity>
     </application>
 

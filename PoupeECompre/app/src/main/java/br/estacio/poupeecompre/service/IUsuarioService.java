@@ -6,15 +6,15 @@ import br.estacio.poupeecompre.dominio.Usuario;
 
 public interface IUsuarioService {
 
-    void insert(Usuario usuario);
+    public void insert(Usuario usuario) throws Exception;
 
-    void update(Usuario usuario);
+    public void update(Usuario usuario);
 
-    void delete(Usuario usuario);
+    public void delete(Usuario usuario);
 
-    List<Usuario> list();
+    public List<Usuario> list();
 
-    Usuario buscarPorId(String id);
+    public Usuario buscarPorId(String id);
 
-    Usuario buscarPorEmail(String email);
+    public Usuario buscarPorEmail(String email);
 }

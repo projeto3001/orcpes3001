@@ -3,6 +3,7 @@ package br.estacio.poupeecompre.dao;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -35,13 +36,16 @@ public class UsuarioDAO extends SQLiteOpenHelper implements IUsuarioService{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public void insert(Usuario usuario) {
+    public void insert(Usuario usuario) throws Exception {
         ContentValues values = new ContentValues();
         values.put("nome", usuario.getNome());
         values.put("email", usuario.getEmail());
         values.put("senha", usuario.getSenha());
-
-        getWritableDatabase().insert(TABLE, null, values);
+        try{
+            getWritableDatabase().insert(TABLE, null, values);
+        }catch (Exception e){
+            throw new Exception("Usuario ja existe!");
+        }
     }
 
     public void update(Usuario usuario) {

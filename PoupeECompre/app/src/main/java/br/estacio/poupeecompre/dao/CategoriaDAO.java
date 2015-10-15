@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.estacio.poupeecompre.dominio.Categoria;
+import br.estacio.poupeecompre.service.ICategoriaService;
 
-public class CategoriaDAO extends SQLiteOpenHelper {
+public class CategoriaDAO extends SQLiteOpenHelper implements ICategoriaService{
     private static final String DATABASE = "PoupeCompre";
     private static final String TABLE = "Categoria";
     private static final int VERSION = 1;

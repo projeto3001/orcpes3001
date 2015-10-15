@@ -17,12 +17,7 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public void insert(Usuario usuario) throws Exception {
-        try {
-            usuarioDAO.insert(usuario);
-        }catch (Exception e){
-            e.printStackTrace();
-            throw e;
-        }
+        usuarioDAO.insert(usuario);
     }
 
     @Override

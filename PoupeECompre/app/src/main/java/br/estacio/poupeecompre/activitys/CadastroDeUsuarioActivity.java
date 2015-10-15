@@ -19,7 +19,7 @@ import br.estacio.poupeecompre.service.UsuarioService;
 
 public class CadastroDeUsuarioActivity extends ActionBarActivity {
 
-    private void cadastrarUsuario() {
+    private void cadastrarUsuario(){
         EditText nomeDoUsuario, email, senha1, senha2;
         nomeDoUsuario = (EditText) findViewById(R.id.usuario);
         email = (EditText) findViewById(R.id.email);
@@ -30,11 +30,7 @@ public class CadastroDeUsuarioActivity extends ActionBarActivity {
             validadorDeCadastro.validar();
             Usuario usuario = new Usuario(email.getText().toString(), nomeDoUsuario.getText().toString(), senha1.getText().toString());
             UsuarioService usuarioService = new UsuarioService(this);
-            try{
-                usuarioService.insert(usuario);
-            }catch (Exception e){
-                System.out.println("TESTEEEEEE");
-            }
+            usuarioService.insert(usuario);
             Intent login = new Intent(CadastroDeUsuarioActivity.this, LoginActivity.class);
             startActivity(login);
         }catch (Exception e){

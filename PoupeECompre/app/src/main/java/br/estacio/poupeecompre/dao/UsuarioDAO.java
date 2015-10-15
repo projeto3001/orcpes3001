@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
@@ -37,14 +38,14 @@ public class UsuarioDAO extends SQLiteOpenHelper implements IUsuarioService{
     }
 
     public void insert(Usuario usuario) throws Exception {
-        ContentValues values = new ContentValues();
-        values.put("nome", usuario.getNome());
-        values.put("email", usuario.getEmail());
-        values.put("senha", usuario.getSenha());
-        try{
+        if(buscarPorEmail(usuario.getEmail()) == null){
+            ContentValues values = new ContentValues();
+            values.put("nome", usuario.getNome());
+            values.put("email", usuario.getEmail());
+            values.put("senha", usuario.getSenha());
             getWritableDatabase().insert(TABLE, null, values);
-        }catch (Exception e){
-            throw new Exception("Usuario ja existe!");
+        }else{
+            throw new Exception("Este email ja foi cadastrado");
         }
     }
 

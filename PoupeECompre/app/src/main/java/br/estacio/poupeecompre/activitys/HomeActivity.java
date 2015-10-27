@@ -3,6 +3,7 @@ package br.estacio.poupeecompre.activitys;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +13,7 @@ import br.estacio.poupeecompre.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private void registrarEventos(Button despesas, Button receitas) {
+    private void registrarEventos(Button despesas, Button receitas, Button categoria, Button conta) {
         despesas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,10 +25,27 @@ public class HomeActivity extends AppCompatActivity {
         receitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent receitasActivity = new Intent(HomeActivity.this, CasdastroDeReceitasActivity.class );
+                Intent receitasActivity = new Intent(HomeActivity.this, CasdastroDeReceitasActivity.class);
                 startActivity(receitasActivity);
             }
         });
+
+        categoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent categoriaActivity = new Intent(HomeActivity.this, CadastroDeCategoriaActivity.class);
+                startActivity(categoriaActivity);
+            }
+        });
+
+        conta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contaActivity = new Intent(HomeActivity.this, CadastroDeContaActivity.class);
+                startActivity(contaActivity);
+            }
+        });
+
     }
 
 
@@ -35,8 +53,15 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Button despesas;
-        despesas = (Button) findViewById(R.id.despesasBtn);
+        Button despesas = (Button) findViewById(R.id.despesasBtn);
+
+        Button receitas = (Button) findViewById(R.id.receitasBtn);
+
+        Button categoria = (Button) findViewById(R.id.categoriasBtn);
+
+        Button conta = (Button) findViewById(R.id.contasBtn);
+
+        registrarEventos(despesas, receitas, categoria, conta);
 
         Button sair = (Button) findViewById(R.id.sairBtn);
         sair.setOnClickListener(new View.OnClickListener() {
@@ -45,9 +70,9 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
-        Button receitas = (Button) findViewById(R.id.receitasBtn);
-        registrarEventos(despesas,receitas);
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

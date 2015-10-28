@@ -19,7 +19,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
+        android:imeOptions="actionNext"
         />
+
     <Button
         android:id="@+id/btnCategoria"
         android:layout_width="wrap_content"

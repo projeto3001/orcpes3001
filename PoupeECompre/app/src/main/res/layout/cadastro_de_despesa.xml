@@ -16,7 +16,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:hint="descrição da despesa" />
+        android:hint="descrição da despesa"
+        android:imeOptions="actionNext"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -28,7 +30,9 @@
         android:layout_marginTop="39dp"
         android:layout_alignRight="@+id/descricao"
         android:layout_alignEnd="@+id/descricao"
-        android:hint="categoria da despesa" />
+        android:hint="categoria da despesa"
+        android:imeOptions="actionNext"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -40,7 +44,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/categoria"
-        android:layout_alignEnd="@+id/categoria" />
+        android:layout_alignEnd="@+id/categoria"
+        android:imeOptions="actionNext"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -52,7 +58,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/conta"
-        android:layout_alignEnd="@+id/conta" />
+        android:layout_alignEnd="@+id/conta"
+        android:imeOptions="actionNext"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -66,7 +74,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/valor"
-        android:layout_alignEnd="@+id/valor" />
+        android:layout_alignEnd="@+id/valor"
+        android:imeOptions="actionNext"
+        />
 
     <Button
         android:layout_width="wrap_content"

@@ -20,7 +20,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
+        android:imeOptions="actionNext"
         />
+
     <EditText
         android:id="@+id/usuario_conta"
         android:layout_width="wrap_content"
@@ -32,6 +34,7 @@
         android:layout_alignRight="@+id/desc_conta"
         android:layout_alignEnd="@+id/desc_conta"
         android:layout_marginTop="25dp"
+        android:imeOptions="actionNext"
         />
 
     <EditText
@@ -45,6 +48,7 @@
         android:layout_alignRight="@+id/usuario_conta"
         android:layout_alignEnd="@+id/usuario_conta"
         android:layout_marginTop="25dp"
+        android:imeOptions="actionNext"
         />
 
     <Button

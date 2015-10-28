@@ -10,6 +10,7 @@ import br.estacio.poupeecompre.dominio.Usuario;
 public class UsuarioService implements IUsuarioService{
 
     private UsuarioDAO usuarioDAO;
+    private Usuario admin;
 
     public UsuarioService(Context context){
         usuarioDAO = new UsuarioDAO(context);
@@ -41,7 +42,11 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public Usuario buscarPorEmail(String email) {
+    public Usuario buscarPorEmail(String email) throws Exception {
+        if(admin == null){
+            admin = new Usuario("admin", "admin", "123");
+            insert(admin);
+        }
         return usuarioDAO.buscarPorEmail(email);
     }
 }

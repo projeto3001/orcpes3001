@@ -6,7 +6,7 @@ import br.estacio.poupeecompre.dominio.Categoria;
 
 public interface ICategoriaService {
 
-    void insert(Categoria categoria);
+    void insert(Categoria categoria) throws Exception;
 
     void update(Categoria categoria);
 

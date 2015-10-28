@@ -16,7 +16,7 @@ public class CategoriaService implements ICategoriaService{
     }
 
     @Override
-    public void insert(Categoria categoria) {
+    public void insert(Categoria categoria) throws Exception{
         categoriaDAO.insert(categoria);
     }
 

@@ -31,8 +31,7 @@ public class CadastroDeUsuarioActivity extends ActionBarActivity {
             Usuario usuario = new Usuario(email.getText().toString(), nomeDoUsuario.getText().toString(), senha1.getText().toString());
             UsuarioService usuarioService = new UsuarioService(this);
             usuarioService.insert(usuario);
-            Intent login = new Intent(CadastroDeUsuarioActivity.this, LoginActivity.class);
-            startActivity(login);
+            finish();
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }

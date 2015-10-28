@@ -16,5 +16,5 @@ public interface IUsuarioService {
 
     public Usuario buscarPorId(String id);
 
-    public Usuario buscarPorEmail(String email);
+    public Usuario buscarPorEmail(String email) throws Exception;
 }

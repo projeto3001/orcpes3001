@@ -36,11 +36,14 @@ public class CategoriaDAO extends SQLiteOpenHelper implements ICategoriaService{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public void insert(Categoria categoria) {
+    public void insert(Categoria categoria) throws Exception{
         ContentValues values = new ContentValues();
-        values.put("nome", categoria.getDescricao());
-
-        getWritableDatabase().insert(TABLE, null, values);
+        values.put("descricao", categoria.getDescricao());
+        if(buscarPorDescricao(categoria.getDescricao()) != null) {
+            getWritableDatabase().insert(TABLE, null, values);
+        }else{
+            throw new Exception("Categoria ja existe");
+        }
     }
 
     public void update(Categoria categoria) {

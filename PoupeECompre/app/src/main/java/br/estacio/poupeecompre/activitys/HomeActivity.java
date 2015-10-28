@@ -52,6 +52,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Verifcar se esta logado, se nao estiver chama a tela de login
+
         setContentView(R.layout.activity_home);
         Button despesas = (Button) findViewById(R.id.despesasBtn);
 

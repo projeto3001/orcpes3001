@@ -44,8 +44,13 @@ public class UsuarioService implements IUsuarioService{
     @Override
     public Usuario buscarPorEmail(String email) throws Exception {
         if(admin == null){
-            admin = new Usuario("admin", "admin", "123");
-            insert(admin);
+            try{
+                admin = buscarPorEmail(admin.getEmail());
+            }catch (Exception e) {
+                System.out.println("Adminstrador não cadastrado.... Cadastrando administrador....");
+                admin = new Usuario("admin", "admin", "123");
+                insert(admin);
+            }
         }
         return usuarioDAO.buscarPorEmail(email);
     }

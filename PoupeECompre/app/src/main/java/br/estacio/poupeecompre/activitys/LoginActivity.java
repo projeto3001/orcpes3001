@@ -66,6 +66,18 @@ public class LoginActivity extends ActionBarActivity {
                 casdastrarUsuario();
             }
         });
+
+        criarAdmin();
+    }
+
+    private void criarAdmin() {
+        Usuario admin = new Usuario("admin", "admin", "123");
+        UsuarioService usuarioService = new UsuarioService(this);
+        try{
+            usuarioService.insert(admin);
+        }catch (Exception e){
+            System.out.println("!!!Admin ja havia sido cadastrado!!!");
+        }
     }
 
     @Override

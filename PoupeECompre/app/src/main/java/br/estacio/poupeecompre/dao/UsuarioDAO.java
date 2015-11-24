@@ -14,13 +14,11 @@ import java.util.List;
 import br.estacio.poupeecompre.dominio.Usuario;
 import br.estacio.poupeecompre.service.IUsuarioService;
 
-public class UsuarioDAO extends SQLiteOpenHelper implements IUsuarioService{
-    private static final String DATABASE = "PoupeCompre";
+public class UsuarioDAO extends DAO implements IUsuarioService{
     private static final String TABLE = "Usuario";
-    private static final int VERSION = 1;
 
     public UsuarioDAO(Context context) {
-        super(context, DATABASE, null, VERSION);
+        super(context);
     }
 
     @Override

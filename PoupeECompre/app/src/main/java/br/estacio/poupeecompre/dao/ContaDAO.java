@@ -24,32 +24,14 @@ import br.estacio.poupeecompre.dominio.Usuario;
 import br.estacio.poupeecompre.service.IContaService;
 
 
-public class ContaDAO extends SQLiteOpenHelper implements IContaService{
-    private static final String DATABASE = "PoupeCompre";
+public class ContaDAO extends DAO implements IContaService{
     private static final String TABLE = "Conta";
-    private static final int VERSION = 1;
     private Context context;
 
 
     public ContaDAO(Context context) {
-        super(context, DATABASE, null, VERSION);
+        super(context);
         this.context = context;
-
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-        String sql = "CREATE TABLE " + TABLE +
-                "(id INTEGER PRIMARY KEY, " +
-                "descricao TEXT UNIQUE," +
-                "saldo NUMERIC," +
-                "FOREIGN KEY(usuarioId) REFERENCES Usuario(id))";
-        db.execSQL(sql);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 

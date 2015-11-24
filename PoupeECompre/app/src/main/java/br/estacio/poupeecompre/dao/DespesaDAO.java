@@ -19,33 +19,15 @@ import br.estacio.poupeecompre.dominio.Conta;
 import br.estacio.poupeecompre.dominio.Despesa;
 import br.estacio.poupeecompre.service.IDespesaService;
 
-public class DespesaDAO extends SQLiteOpenHelper implements IDespesaService{
-    private static final String DATABASE = "PoupeCompre";
+public class DespesaDAO extends DAO implements IDespesaService{
     private static final String TABLE = "Despesa";
-    private static final int VERSION = 1;
     public static Object insert;
     private Context context;
 
 
     public DespesaDAO(Context context) {
-        super(context, DATABASE, null, VERSION);
+        super(context);
         this.context = context;
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE " + TABLE +
-                "(id INTEGER PRIMARY KEY, " +
-                "descricao TEXT NOT NULL," +
-                "data TEXT NOT NULL," +
-                "valor NUMERIC NOT NULL," +
-                "FOREIGN KEY(contaId) REFERENCES Conta(id))," +
-                "FOREIGN KEY(categoriaId) REFERENCES Categoria(id)";
-        db.execSQL(sql);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
     @Override

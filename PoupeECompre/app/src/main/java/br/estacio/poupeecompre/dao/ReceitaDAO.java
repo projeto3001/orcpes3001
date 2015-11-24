@@ -18,32 +18,13 @@ import br.estacio.poupeecompre.dominio.Conta;
 import br.estacio.poupeecompre.dominio.Receita;
 import br.estacio.poupeecompre.service.IReceitaService;
 
-public class ReceitaDAO extends SQLiteOpenHelper implements IReceitaService{
-    private static final String DATABASE = "PoupeCompre";
+public class ReceitaDAO extends DAO implements IReceitaService{
     private static final String TABLE = "Receita";
-    private static final int VERSION = 1;
     private Context context;
 
     public ReceitaDAO(Context context) {
-        super(context, DATABASE, null, VERSION);
+        super(context);
         this.context = context;
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE " + TABLE +
-                "(id INTEGER PRIMARY KEY, " +
-                "data TEXT NOT NULL, " +
-                "descricao TEXT," +
-                "valor NUMERIC NOT NULL," +
-                "contaId INTEGER NOT NULL," +
-                "FOREIGN KEY(contaId) REFERENCES Conta(id))";
-        db.execSQL(sql);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     @Override

@@ -12,28 +12,12 @@ import java.util.List;
 import br.estacio.poupeecompre.dominio.Categoria;
 import br.estacio.poupeecompre.service.ICategoriaService;
 
-public class CategoriaDAO extends SQLiteOpenHelper implements ICategoriaService{
-    private static final String DATABASE = "PoupeCompre";
+public class CategoriaDAO extends DAO implements ICategoriaService{
     private static final String TABLE = "Categoria";
-    private static final int VERSION = 1;
-    private Context context;
 
 
     public CategoriaDAO(Context context) {
-        super(context, DATABASE, null, VERSION);
-        this.context = context;
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE " + TABLE +
-                "(id INTEGER PRIMARY KEY, " +
-                "descricao TEXT NOT NULL UNIQUE)";
-        db.execSQL(sql);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        super(context);
     }
 
     public void insert(Categoria categoria) throws Exception{

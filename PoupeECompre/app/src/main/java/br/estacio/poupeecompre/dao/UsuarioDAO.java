@@ -21,20 +21,6 @@ public class UsuarioDAO extends DAO implements IUsuarioService{
         super(context);
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE " + TABLE +
-                "(id INTEGER PRIMARY KEY, " +
-                "nome TEXT NOT NULL, " +
-                "email TEXT NOT NULL UNIQUE, " +
-                "senha TEXT NOT NULL)";
-        db.execSQL(sql);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    }
-
     public void insert(Usuario usuario) throws Exception {
         if(buscarPorEmail(usuario.getEmail()) == null){
             ContentValues values = new ContentValues();

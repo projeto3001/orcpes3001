@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.estacio.poupeecompre.R;
+import br.estacio.poupeecompre.dao.DAO;
 import br.estacio.poupeecompre.dominio.Usuario;
 import br.estacio.poupeecompre.helpers.ValidadorDeLogin;
 import br.estacio.poupeecompre.service.UsuarioService;

@@ -71,7 +71,7 @@ public class CategoriaDAO extends DAO implements ICategoriaService{
 
     public Categoria buscarPorDescricao(String descricao) {
         Cursor c = getReadableDatabase()
-                .rawQuery("SELECT * FROM " + TABLE + " WHERE descricao = ", new String[]{descricao});
+                .rawQuery("SELECT * FROM " + TABLE + " WHERE descricao = ?", new String[]{descricao});
         Categoria categoria = null;
         if(c.moveToNext()) {
             categoria = new Categoria(c.getString(c.getColumnIndex("descricao")));

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DAO extends SQLiteOpenHelper {
     private static final String DATABASE = "PoupeCompre";
-    private static final int VERSION = 1;
+    private  static int VERSION = 1;
 
     public DAO(Context context) {
         super(context, DATABASE, null, VERSION);
@@ -14,11 +14,11 @@ public class DAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        criarTabelaCategoria(db);
+        criarTabelaUsuario(db);
         criarTabelaConta(db);
+        criarTabelaCategoria(db);
         criarTabelaDespesa(db);
         criarTabelaReceita(db);
-        criarTabelaUsuario(db);
     }
 
     private void criarTabelaUsuario(SQLiteDatabase db) {
@@ -75,6 +75,5 @@ public class DAO extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 }

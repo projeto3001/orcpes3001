@@ -3,8 +3,6 @@ package br.estacio.poupeecompre.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +21,10 @@ public class CategoriaDAO extends DAO implements ICategoriaService{
     public void insert(Categoria categoria) throws Exception{
         ContentValues values = new ContentValues();
         values.put("descricao", categoria.getDescricao());
-        if(buscarPorDescricao(categoria.getDescricao()) != null) {
+        if(buscarPorDescricao(categoria.getDescricao()) == null) {
             getWritableDatabase().insert(TABLE, null, values);
         }else{
-            throw new Exception("Categoria ja existe");
+            throw new Exception("Categoria ja existe"); 
         }
     }
 

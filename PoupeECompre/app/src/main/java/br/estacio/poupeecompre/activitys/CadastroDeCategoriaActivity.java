@@ -23,11 +23,13 @@ public class CadastroDeCategoriaActivity extends AppCompatActivity {
         CategoriaService categoriaService = new CategoriaService(this);
         Categoria categoria = new Categoria(descricao.getText().toString());
         try{
-            System.out.println("Inserindo categoria..........");
+            if(categoria.getDescricao().trim().equals("")){
+                throw new Exception("É necessário informar uma descrição para a categoria.");
+            }
             categoriaService.insert(categoria);
             finish();
         }catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG);
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 

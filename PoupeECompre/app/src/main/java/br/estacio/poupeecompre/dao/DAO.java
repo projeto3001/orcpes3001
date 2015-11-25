@@ -38,7 +38,7 @@ public class DAO extends SQLiteOpenHelper {
                 "data TEXT NOT NULL, " +
                 "descricao TEXT," +
                 "valor NUMERIC NOT NULL," +
-                "contaId INTEGER NOT NULL," +
+                "contaId INTEGER," +
                 "FOREIGN KEY(contaId) REFERENCES Conta(id))";
         db.execSQL(sql);
     }
@@ -50,8 +50,10 @@ public class DAO extends SQLiteOpenHelper {
                 "descricao TEXT NOT NULL," +
                 "data TEXT NOT NULL," +
                 "valor NUMERIC NOT NULL," +
-                "FOREIGN KEY(contaId) REFERENCES Conta(id))," +
-                "FOREIGN KEY(categoriaId) REFERENCES Categoria(id)";
+                "contaId Integer, " +
+                "categoriaId Integer, "+
+                "FOREIGN KEY(contaId) REFERENCES Conta(id)," +
+                "FOREIGN KEY(categoriaId) REFERENCES Categoria(id))";
         db.execSQL(sql);
     }
 
@@ -61,6 +63,7 @@ public class DAO extends SQLiteOpenHelper {
                 "(id INTEGER PRIMARY KEY, " +
                 "descricao TEXT UNIQUE," +
                 "saldo NUMERIC," +
+                "usuarioId INTEGER, " +
                 "FOREIGN KEY(usuarioId) REFERENCES Usuario(id))";
         db.execSQL(sql);
     }
